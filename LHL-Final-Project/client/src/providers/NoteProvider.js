@@ -91,8 +91,7 @@ export default function NoteProvider(props) {
     }).then(res => res.json())
       .then(data => {
         //console.log("data:", data)
-        setNoteData([noteData.filter((notes)=> notes.id !== noteId)]) // remove obj from array 
-        window.location.reload()
+        setNoteData(noteData.filter((notes)=> notes.id !== noteId)) // remove obj from array 
       })
     // reset()
 

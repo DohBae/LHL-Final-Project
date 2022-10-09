@@ -90,7 +90,4 @@ const noteList = noteData.map((note, i) => (
 //   );
 // } }
 
-
-
-
-
+  }
