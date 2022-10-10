@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
-import { noteContext } from 'providers/NoteProvider';
+// import { noteContext } from 'providers/NoteProvider';
+import { noteContext } from '../providers/NoteProvider';
 import './Notes.css'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -8,12 +9,19 @@ import { BsTrash } from 'react-icons/bs';
 
 export default function Notes(props) {
 
-  //const [noteData, setNoteData] = useState(undefined)
+  //hard-coded for now
+  // const id = 1;
+//   useEffect(() => {
+//     loadNotes(id)
+//  //pass a function here that sets note data
+//   }, [])
+
+//const [noteData, setNoteData] = useState(undefined)
   //const [id, setId] = useState(3)  if  a user is logged in, we will setId to the corresponding user id.
 
 
   //use localStorage data to auto populate
-  // const id = JSON.parse(localStorage.getItem('notifyUser')).id
+  const id = JSON.parse(localStorage.getItem('notifyUser')).id
   // console.log("ID: ", id)
   // const id = 3;
   // useEffect(() => {

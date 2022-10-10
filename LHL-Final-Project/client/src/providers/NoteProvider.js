@@ -20,7 +20,7 @@ export default function NoteProvider(props) {
   const [noteIdToShow, setNoteIdToShow] = useState(0)
   // Here is our Shared State Object
   const [classId, setClassId] = useState()
-  const userId = 1; // this has to come from auth provider-useContext
+  const userId = JSON.parse(localStorage.getItem('notifyUser')).id; // this has to come from auth provider-useContext
 
   useEffect(() => {
     fetch(`/notes/${userId}`).then(
