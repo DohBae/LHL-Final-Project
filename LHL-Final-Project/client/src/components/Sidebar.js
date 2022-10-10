@@ -38,12 +38,15 @@ const noteList = noteData.map((note, i) => {
   <div key ={i} className="app-sidebar-note">
     <div className="sidebar-note-title">
       <strong>{note.title}</strong>
-      <button type="button" onClick={()=> deleteNote(note.id)}>Delete</button>
     </div>
 
     <p>{note.body.substr(0, 100) + "....."}</p>
 
     <small className="note-meta">Last modified {note.publishdate}</small>
+    <br></br>
+    <div>
+      <button type="button" onClick={()=> deleteNote(note.id)}>Delete</button>
+    </div>
   </div>
 
 

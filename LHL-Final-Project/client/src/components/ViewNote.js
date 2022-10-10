@@ -8,7 +8,7 @@ import '../App.css';
 
 export default function ViewNote () {
 
-  const {allNotes, noteIdToShow} = useContext(noteContext);
+  const {allNotes, noteIdToShow, saved, setSaved} = useContext(noteContext);
 
   const noteList = allNotes.filter((note) => note.id === noteIdToShow)
 
@@ -22,11 +22,17 @@ export default function ViewNote () {
           <Card.Body>
             <Card.Title className="text-center">{note.title}</Card.Title>
             <Card.Text  style={{fontsize:80}}>{note.body}</Card.Text>
+            <div align="right">
+
+          <button onClick={() => setSaved("liked")}>{saved}</button>
+            </div>
           </Card.Body>
             {/* <div class=" text-right">
               <button type="button" class="btn btn-outline-primary">Edit</button>
               <button type="button" class="btn btn-outline-danger">Delete</button>
             </div> */}
+            
+          
         </Card>
         </ul>
     ))

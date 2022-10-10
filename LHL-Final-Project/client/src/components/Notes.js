@@ -6,8 +6,10 @@ import './Notes.css'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { BsTrash } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 export default function Notes(props) {
+  const navigate = useNavigate()
 
   //hard-coded for now
   // const id = 1;
@@ -30,7 +32,7 @@ export default function Notes(props) {
   //     .then(data => setNoteData(data))
   // }, [])
 
-  const { noteData, selectNoteIdToShow, deleteNote } = useContext(noteContext);
+  const { noteData, selectNoteIdToShow, deleteNote, editNoteView } = useContext(noteContext);
 
   const noteList = noteData.map((note, i) => (
 
@@ -38,14 +40,14 @@ export default function Notes(props) {
     <ul>
         <div className="card-container" >
           <Card border="dark" key={i} style={{ width: '80rem' }} >
-      <div onClick={() => selectNoteIdToShow(note.id)}>
+           <div onClick={() => selectNoteIdToShow(note.id)}>
             <Card.Body>
               <Card.Title className="text-center">{note.title}</Card.Title>
               <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
             </Card.Body>
             </div>
               <div class=" text-right">
-                <button type="button" class="btn btn-outline-primary">Edit</button>
+                <button onClick={()=> editNoteView(note)} type="button" class="btn btn-outline-primary">Edit</button>
                 <button onClick={()=> deleteNote(note.id)} type="button" class="btn btn-outline-danger"><BsTrash size={20} /></button>
               </div>
           </Card>

@@ -62,6 +62,15 @@ router.post('/notes', (req, res) => {
    })
 });
 
+router.post('/notes/edit/:id', (req, res) => {
+  console.log("editing test")
+  console.log(req.body,req.params.id)
+  notes.editNotes(req.body, req.params.id).then(data => {
+    res.json(data)
+  })
+});
+
+
 router.post('/notes/delete/:id', (req, res) => {
   console.log("deleting test")
   console.log(req.params)

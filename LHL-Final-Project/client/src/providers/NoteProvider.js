@@ -12,6 +12,7 @@ export default function NoteProvider(props) {
   const navigate = useNavigate()
  
   // Here is our Shared State Object
+  //const [dataToEdit, setDataToEdit] = useState([])
   const [noteData, setNoteData] = useState([]);
   const [allNotes, setAllNotes] = useState([]);
   const [ title, setTitle] = useState("")
@@ -19,11 +20,12 @@ export default function NoteProvider(props) {
   const [name, setName] = useState("")
   const [noteIdToShow, setNoteIdToShow] = useState(0)
   const [userInfo, setUserInfo] = useState(null)
-
+  const [noteIdToEdit, setNoteIdToEdit] = useState(0)
+  const [saved, setSaved] = useState("save to favorites")
   // Here is our Shared State Object
   const [classId, setClassId] = useState()
   // const userId = JSON.parse(localStorage.getItem('notifyUser')).id; // this has to come from auth provider-useContext
-const userId = 3
+const userId = 1
   useEffect(() => {
     fetch(`/notes/${userId}`).then(
       res => res.json())
@@ -89,6 +91,49 @@ const userId = 3
       reset()
   }
 
+  function editNote(title, text, noteId) {
+
+   
+  //   let realId;
+  //   console.log(name)
+  //   if(name === "History") {
+  //     realId = 1;
+  //   }
+  //   if(name === "Math") {
+  //     realId = 2;
+  //   }
+  //  if (name === "Literature") {
+  //    realId = 3;
+  //  }
+  //   console.log("REALID:",realId)
+    const note = {
+      title: title,
+      body: text,
+      // user_id: userId,
+      // class_id: realId,
+      // semester_id: 1
+    }
+    const body = JSON.stringify(note)
+
+    fetch(`/notes/edit/${noteId}`, {
+      method: "POST",
+      body,
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+
+    }).then(res => res.json())
+      .then(note => {
+        console.log(note)
+        setNoteData([noteData])
+        selectNoteIdToShow(note.id)
+        navigate('/viewNote')
+        //setNoteData([...noteData, note])
+      })
+      reset()
+     
+  }
+
   function deleteNote(noteId) {
     //setNoteId(note.id)
 
@@ -107,6 +152,12 @@ const userId = 3
     navigate("/viewNote")
   }
 
+  function editNoteView(data) {
+    setTitle(data.title)
+    setText(data.body)
+    setNoteIdToEdit(data.id)
+    navigate('/edit')
+  }
   // function setCourseToAdd(name) {
   //   //setCourseName(name)
 
@@ -130,7 +181,8 @@ const userId = 3
 
 
   // This list can get long with a lot of functions.  Reducer may be a better choice
-  const providerData = { noteData, classId, userInfo, setUserInfo, title, text, name, allNotes, noteIdToShow,setNoteIdToShow,
+  const providerData = { noteData, classId, userInfo, title, text, name, allNotes, noteIdToShow, noteIdToEdit,saved, setSaved, editNoteView, 
+    editNote, setNoteIdToShow, setUserInfo, setNoteIdToEdit,
      setName, setTitle, setText, setAllNotes,  addNote, deleteNote,  setClassId, selectNoteIdToShow};
 
   // We can now use this as a component to wrap anything 
