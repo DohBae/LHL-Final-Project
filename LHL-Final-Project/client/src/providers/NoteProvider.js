@@ -18,10 +18,12 @@ export default function NoteProvider(props) {
   const [text, setText] = useState("")
   const [name, setName] = useState("")
   const [noteIdToShow, setNoteIdToShow] = useState(0)
+  const [userInfo, setUserInfo] = useState(null)
+
   // Here is our Shared State Object
   const [classId, setClassId] = useState()
-  const userId = JSON.parse(localStorage.getItem('notifyUser')).id; // this has to come from auth provider-useContext
-
+  // const userId = JSON.parse(localStorage.getItem('notifyUser')).id; // this has to come from auth provider-useContext
+const userId = 3
   useEffect(() => {
     fetch(`/notes/${userId}`).then(
       res => res.json())
@@ -128,7 +130,7 @@ export default function NoteProvider(props) {
 
 
   // This list can get long with a lot of functions.  Reducer may be a better choice
-  const providerData = { noteData, classId, title, text, name, allNotes, noteIdToShow,setNoteIdToShow,
+  const providerData = { noteData, classId, userInfo, setUserInfo, title, text, name, allNotes, noteIdToShow,setNoteIdToShow,
      setName, setTitle, setText, setAllNotes,  addNote, deleteNote,  setClassId, selectNoteIdToShow};
 
   // We can now use this as a component to wrap anything 

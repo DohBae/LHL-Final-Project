@@ -15,7 +15,7 @@ import Auth from './components/Auth';
 import Notify from './components/Notify';
 import AddNote from './components/AddNote';
 import { useContext } from 'react';
-import { noteContext } from 'providers/NoteProvider';
+import { noteContext } from './providers/NoteProvider';
 import './App.css';
 
 
@@ -27,15 +27,12 @@ function App() {
       <div className='content'>
         <NoteProvider>
         <Routes>
-        {/* change to <Dashboard/> */}
-          
           <Route path="/dashboard" element={<Dashboard/>} /> 
           <Route path="/addNotes"  element={<AddNote/>} />
           <Route path="/historyNotes" element={<ViewHistoryNotes/>} />
           <Route path="/mathNotes"  element={<ViewMathNotes/>} />
           <Route path="/literatureNotes" element={<ViewLiteratureNotes/>} />
           <Route path="/viewNote" element={<ViewNote />} />
-          {/* <Route path="/dashboard" element={<Dashboard/>} />  */}
           <Route path="/" element={<LandingPage/>} /> 
           <Route path="/dashboard" element={<Dashboard/>} /> 
           <Route path="/auth" element={<Auth/>} /> 

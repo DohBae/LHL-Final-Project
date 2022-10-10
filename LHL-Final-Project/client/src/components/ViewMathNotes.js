@@ -41,7 +41,6 @@ export default function ViewMathNotes() {
               <button type="button" class="btn btn-outline-danger">Delete</button>
             </div> */}
             <Card.Text >{note.body.substr(0,300) + "....."}</Card.Text>
-            <Card.Link href="/viewNote"><p text align="center"  decoration="none">View note</p></Card.Link>
     
           </Card.Body>
         </Card>
