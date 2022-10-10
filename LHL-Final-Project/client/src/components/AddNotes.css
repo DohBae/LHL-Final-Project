@@ -58,7 +58,7 @@
 }
 .app-sidebar-note {
   padding: 25px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .sidebar-note-title {
   display: flex;

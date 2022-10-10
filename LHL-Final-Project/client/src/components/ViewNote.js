@@ -6,11 +6,11 @@ import './Notes.css'
 import Card from 'react-bootstrap/Card';
 import '../App.css';
 
-export default function ViewNote (props) {
+export default function ViewNote () {
 
-  const {allNotes} = useContext(noteContext);
+  const {allNotes, noteIdToShow} = useContext(noteContext);
 
-  const noteList = allNotes.filter((note) => note.id === 1)
+  const noteList = allNotes.filter((note) => note.id === noteIdToShow)
 
 
   const noteListed = noteList.map((note, i) => (
@@ -23,10 +23,10 @@ export default function ViewNote (props) {
             <Card.Title className="text-center">{note.title}</Card.Title>
             <Card.Text  style={{fontsize:80}}>{note.body}</Card.Text>
           </Card.Body>
-            <div class=" text-right">
+            {/* <div class=" text-right">
               <button type="button" class="btn btn-outline-primary">Edit</button>
               <button type="button" class="btn btn-outline-danger">Delete</button>
-            </div>
+            </div> */}
         </Card>
         </ul>
     ))

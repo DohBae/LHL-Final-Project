@@ -6,38 +6,23 @@ import { useNavigate } from 'react-router-dom';
 
 export default function NavBar(props) {
 
+  //INCOMING CODE
+   // toggle login/register button with logout
+
+  const navigate = useNavigate()
+  const userObject = localStorage.getItem('notifyUser')
+  console.log("USEROBJECT: ", userObject)
+  const handleOnClick = (e) => {
+    e.preventDefault()
+    localStorage.removeItem('notifyUser')
+    navigate("/auth")
+  }
+
+
   const [classData, setClassData] = useState(undefined)
   const [activeLink, setActiveLink] = React.useState('dashboard');
 
-  useEffect(() => {
-    fetch("/classes").then(
-      res => res.json())
-      .then(data => setClassData(data))
-    }, [])
-//   const arr = [];
-//   const arr1 = [];
-//   console.log(classData)
-//   const x = classData.classes;
-//   console.log(x)
-//   for (let i of x) {
-//     arr.push(i.name)
-//   }
-// console.log(arr)
-//   for (let i of arr) {
-//     return arr1.push((
-//       <DropdownItem href=""> {i}</DropdownItem>
-//       ))
-//   }
 
-// toggle login/register button with logout
-const navigate = useNavigate()
-const userObject = localStorage.getItem('notifyUser')
-console.log("USEROBJECT: ", userObject)
-const handleOnClick = (e) => {
-  e.preventDefault()
-  localStorage.removeItem('notifyUser')
-  navigate("/auth")
-}
 if (userObject) {
 
   return (
@@ -73,18 +58,76 @@ if (userObject) {
       </Navbar.Collapse>
     </Navbar>
 
-  ) } else {
+  ) 
+} else {
   return (
     <Navbar bg="color" variant="dark" fixed="top" expand="lg">
-    <Navbar.Brand>
-    <img src="https://cdn.vectorstock.com/i/1000x1000/45/29/cute-dog-flat-logo-icon-vector-32724529.webp" width="100" hight="50" alt="Brand Logo"/>
-    </Navbar.Brand>
-    <Navbar.Brand>Notify</Navbar.Brand>
+      <Navbar.Brand>
+        <img src="https://cdn.vectorstock.com/i/1000x1000/45/29/cute-dog-flat-logo-icon-vector-32724529.webp" width="100" hight="50" alt="Brand Logo"/>
+      </Navbar.Brand>
+      <Navbar.Brand>Notify</Navbar.Brand>
     </Navbar>
     
-    )
-  }
+  )
+}
+
+
+
+
+  // // toggle login/register button with logout
+  // const navigate = useNavigate()
+  // const userObject = localStorage.getItem('notifyUser')
+  // console.log("USEROBJECT: ", userObject)
+  // const handleOnClick = (e) => {
+  //   e.preventDefault()
+  //   localStorage.removeItem('notifyUser')
+  //   navigate("/auth")
+  // }
+
+  // if (userObject) {
+
+  //   return (
   
+  
+  //     <Navbar bg="color" variant="dark" fixed="top" expand="lg">
+  //       <Navbar.Brand>
+  //         <img src="https://cdn.vectorstock.com/i/1000x1000/45/29/cute-dog-flat-logo-icon-vector-32724529.webp" width="100" hight="50" alt="Brand Logo" />
+  //       </Navbar.Brand>
+  //       <Navbar.Toggle />
+  //       <Navbar.Collapse>
+  
+  //         <Nav
+  //           defaultActiveKey={activeLink}
+  //           onSelect={(selectedKey, e) => {
+  //             setActiveLink(selectedKey);
+  //           }}
+  //         >
+  //           <Nav.Link href="/dashboard" eventKey="dashboard"> Dashboard</Nav.Link>
+  //           <Nav.Link href="/note" eventKey="note"> Add Notes</Nav.Link>
+  //           <Nav.Link href=""> Favorites</Nav.Link>
+  //           <NavDropdown title="Classes">
+  //             <DropdownItem href=""> Math</DropdownItem>
+  //             <DropdownItem href=""> History</DropdownItem>
+  //             <DropdownItem href=""> Programing</DropdownItem>
+  //           </NavDropdown>
+  //             <Nav.Link href="/auth" eventKey="auth" onClick={handleOnClick}> Logout</Nav.Link>
+  //         </Nav>
+  //       </Navbar.Collapse>
+  //     </Navbar>
+  
+  //   )
+  // } else {
+  //   return (
+  //     <Navbar bg="color" variant="dark" fixed="top" expand="lg">
+  //       <Navbar.Brand>
+  //         <img src="https://cdn.vectorstock.com/i/1000x1000/45/29/cute-dog-flat-logo-icon-vector-32724529.webp" width="100" hight="50" alt="Brand Logo"/>
+  //       </Navbar.Brand>
+  //       <Navbar.Brand>Notify</Navbar.Brand>
+  //     </Navbar>
+      
+  //   )
+  // }
+ 
   // return (
 
 

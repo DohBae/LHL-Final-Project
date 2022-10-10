@@ -20,7 +20,7 @@ import '../App.css';
 
 export default function ViewMathNotes() {
 
-  const {allNotes} = useContext(noteContext);
+  const {allNotes, selectNoteIdToShow} = useContext(noteContext);
 
   const noteList = allNotes.filter((note) => note.class_id === 2)
 
@@ -29,7 +29,10 @@ export default function ViewMathNotes() {
       
 <ul>
     
-    
+      
+<div onClick={() => selectNoteIdToShow(note.id)}>
+
+< div className= "card-container" >
         <Card border="dark" key={i} style={{ width: '80rem' }} href="/addNotes" >
           <Card.Body>
             <Card.Title className="text-center">{note.title}</Card.Title>
@@ -42,6 +45,8 @@ export default function ViewMathNotes() {
     
           </Card.Body>
         </Card>
+        </div>
+        </div>
         </ul>
     ))
     
