@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 // Create a Context
 export const noteContext = createContext();
@@ -6,17 +8,19 @@ export const noteContext = createContext();
 // Create a Component wrapper from Context.Provider
 export default function NoteProvider(props) {
 
+
+  const navigate = useNavigate()
+ 
   // Here is our Shared State Object
   const [noteData, setNoteData] = useState([]);
   const [allNotes, setAllNotes] = useState([]);
   const [ title, setTitle] = useState("")
   const [text, setText] = useState("")
   const [name, setName] = useState("")
+  const [noteIdToShow, setNoteIdToShow] = useState(0)
   // Here is our Shared State Object
-  const [courseName, setCourseName] = useState(""); //course to add note to
-//  const [courses, setCourses] = useState([])
   const [classId, setClassId] = useState()
-  const userId = 1; // this has to come from auth provider-useContext
+  const userId = JSON.parse(localStorage.getItem('notifyUser')).id; // this has to come from auth provider-useContext
 
   useEffect(() => {
     fetch(`/notes/${userId}`).then(
@@ -45,15 +49,16 @@ export default function NoteProvider(props) {
 
   function addNote(title, text, classId, name) {
 
+   
     let realId;
     console.log(name)
-    if(name == "History") {
+    if(name === "History") {
       realId = 1;
     }
-    if(name == "Math") {
+    if(name === "Math") {
       realId = 2;
     }
-   if (name == "Literature") {
+   if (name === "Literature") {
      realId = 3;
    }
     console.log("REALID:",realId)
@@ -91,11 +96,13 @@ export default function NoteProvider(props) {
     }).then(res => res.json())
       .then(data => {
         //console.log("data:", data)
-        setNoteData([noteData.filter((notes)=> notes.id !== noteId)]) // remove obj from array 
-        window.location.reload()
+        setNoteData(noteData.filter((notes)=> notes.id !== noteId)) // remove obj from array 
       })
-    // reset()
+  }
 
+  function selectNoteIdToShow(id) {
+    setNoteIdToShow(id)
+    navigate("/viewNote")
   }
 
   // function setCourseToAdd(name) {
@@ -116,14 +123,13 @@ export default function NoteProvider(props) {
   //  console.log(name)
   //   console.log(classId)
   // }
-function showName() {
-  console.log(name)
-}
+
+
 
 
   // This list can get long with a lot of functions.  Reducer may be a better choice
-  const providerData = { noteData, classId, title, text, name, allNotes, showName,
-     setName, setTitle, setText, setAllNotes,  addNote, deleteNote,  setCourseName, setClassId};
+  const providerData = { noteData, classId, title, text, name, allNotes, noteIdToShow,setNoteIdToShow,
+     setName, setTitle, setText, setAllNotes,  addNote, deleteNote,  setClassId, selectNoteIdToShow};
 
   // We can now use this as a component to wrap anything 
   // that needs our state

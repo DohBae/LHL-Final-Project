@@ -14,11 +14,13 @@ import LandingPage from "./components/LandingPage.js";
 import Auth from './components/Auth';
 import Notify from './components/Notify';
 import AddNote from './components/AddNote';
+import { useContext } from 'react';
+import { noteContext } from 'providers/NoteProvider';
 import './App.css';
 
 
 function App() {
-const id = 1;
+
   return (
     <div className='fixed-content'>
       <NavBar />
@@ -32,7 +34,7 @@ const id = 1;
           <Route path="/historyNotes" element={<ViewHistoryNotes/>} />
           <Route path="/mathNotes"  element={<ViewMathNotes/>} />
           <Route path="/literatureNotes" element={<ViewLiteratureNotes/>} />
-          <Route path="/viewNote" element={<ViewNote id={id}/>} />
+          <Route path="/viewNote" element={<ViewNote />} />
           {/* <Route path="/dashboard" element={<Dashboard/>} />  */}
           <Route path="/" element={<LandingPage/>} /> 
           <Route path="/dashboard" element={<Dashboard/>} /> 
