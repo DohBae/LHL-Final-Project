@@ -19,20 +19,7 @@ export default function Main(props) {
   //   setTitle("")
   //   setText("")
   // }
-  function selectId(name) {
-    if (name === "History") {
 
-      return setClassId(1)
-
-    }
-    if (name === "Math") {
-      return setClassId(2)
-    }
-    if (name === "Literature") {
-      return setClassId(3)
-    }
-
-  }
 
 
   return (
@@ -69,8 +56,6 @@ export default function Main(props) {
             onChange={(e) => { setText(e.target.value) }} required
           />
           <button type="button" class="btn btn-primary" onClick={() => {
-            selectId(name)
-            console.log(classId)
             addNote(title, text, classId, name)}} //change class and semester
           >Add note</button>
         </form>
