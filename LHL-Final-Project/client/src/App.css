@@ -1,11 +1,4 @@
 
-<<<<<<< HEAD
-/* #root {
-  background: linear-gradient(#75c9b7bd, #abd699b3)
-} */
-.root{
-  background: linear-gradient(#75c9b7bd, #abd699b3)
-=======
 #root {
   background: linear-gradient(to bottom right, #75c9b7bd, #abd699b3)
 }
@@ -13,9 +6,7 @@
 .font-link{
   font-family: 'Inter Tight', sans-serif;
 }
->>>>>>> main
 
-}
  .bg-color{
   background-color: #16123f;
 }
