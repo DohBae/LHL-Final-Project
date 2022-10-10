@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
-import { noteContext } from 'providers/NoteProvider';
+import { noteContext } from '../providers/NoteProvider';
 import './Notes.css'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -62,7 +62,7 @@ const noteList = noteData.map((note, i) => (
       
         {noteList}
 </div>
-)
+)}
 
 //     { <div onClick={() => alert("Hello from here")}>
 //       {noteData ? (noteData.notes.map((note, i) => (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useContext } from 'react';
-import { noteContext } from 'providers/NoteProvider';
+import { noteContext } from '../providers/NoteProvider';
 
 export default function Sidebar() {
 
