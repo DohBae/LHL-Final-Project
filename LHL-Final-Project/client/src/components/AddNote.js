@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
-import { noteContext } from 'providers/NoteProvider';
+// import { noteContext } from 'providers/NoteProvider';
+import { noteContext } from '../providers/NoteProvider';
 import './AddNotes.css'
 import { Container } from "react-bootstrap";
 import Main from "./Main";
