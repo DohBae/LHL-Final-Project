@@ -1,12 +1,11 @@
 
-import React, { useState, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import './Auth.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Auth() {
   const navigate = useNavigate()
-  // const { login } = useContext(authContext)
   const [authMode, setAuthMode] = useState("signin");
   // login values. these get sent to the back end
   const [email, setEmail] = useState("");
@@ -47,6 +46,8 @@ function Auth() {
         }
       })
     }
+
+    
 
   if (authMode === "signin") {
     return (
