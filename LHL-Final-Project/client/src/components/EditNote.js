@@ -22,7 +22,7 @@ export default function Main(props) {
             onChange={(e) => { setText(e.target.value) }} required
           />
           <div className="ed-div">
-            <button type="button" class="btn btn-primary" onClick={() => { editNote(title, text, noteIdToEdit) }} >Save change</button>
+            <button type="button" class="btn btn-outline-primary" onClick={() => { editNote(title, text, noteIdToEdit) }} >Save change</button>
             <button type="button" class="btn btn-outline-danger" onClick={() => { reset(); navigate('/dashboard') }}>Cancel</button>
           </div>
         </form>

@@ -26,12 +26,14 @@ export default function ViewHistoryNotes() {
           <Card.Body>
             <Card.Title className="text-center">{note.title}</Card.Title>
             <Card.Text >{note.body.substr(0, 175) + "....."}</Card.Text>
+              <div className="posted-by">
+              <small align="right" className="note-meta">Last modified: {note.publishdate}</small>
+              </div>
           </Card.Body>
           <Card.Footer>
-            <div align="right">
-              <small align="right" className="note-meta">Last modified: {note.publishdate}</small>
+            <div align="left">
               <br></br>
-              <small align="right" className="note-meta">posted by user:{note.user_id}</small>
+              <small align="left" className="note-meta">posted by user:{note.user_id}</small>
             </div>
           </Card.Footer>
         </Card>

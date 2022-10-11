@@ -63,3 +63,12 @@ body {
   justify-content: space-between;
   align-content: space-around;
 }
+
+.posted-by {
+  position: absolute;
+  bottom: 77px;;
+}
+
+small {
+  color: #615f75;
+}

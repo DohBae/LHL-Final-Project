@@ -24,12 +24,17 @@ export default function ViewHistoryNotes() {
           <div onClick={() => { selectNoteIdToShow(note.note_id); isNoteIdSaved(note.note_id) }}>
             <Card.Title className="text-center">{note.title}</Card.Title>
             <Card.Text >{note.body.substr(0, 175) + "....."}</Card.Text>
+          <div className="posted-by">
+          <small>Last modified: {note.publishdate}</small>
+          </div>
           </div>
         </Card.Body>
+        <Card.Footer>
         <div class="fav">
-          <small>Last modified: {note.publishdate}</small>
+          <small className="note-meta">posted by user:{note.user_id}</small>
           <button onClick={() => removeFromSaved(note.note_id)} type="button" class="btn btn-outline-danger"><BsTrash size={20} /></button>
         </div>
+        </Card.Footer>
       </Card>
     </div>
   ))

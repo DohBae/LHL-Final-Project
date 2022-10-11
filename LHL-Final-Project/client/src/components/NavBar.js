@@ -37,7 +37,7 @@ export default function NavBar(props) {
             <Nav.Link href="/dashboard" eventKey="dashboard"> Dashboard</Nav.Link>
             <Nav.Link href="/addNotes" eventKey="note"> Add Notes</Nav.Link>
             <Nav.Link href="/favorites"> Favorites</Nav.Link>
-            <NavDropdown title="Classes">
+            <NavDropdown title="Class Notes">
               <DropdownItem href="/historyNotes"> History</DropdownItem>
               <DropdownItem href="/mathNotes"> Math</DropdownItem>
               <DropdownItem href="/literatureNotes"> Literature</DropdownItem>
