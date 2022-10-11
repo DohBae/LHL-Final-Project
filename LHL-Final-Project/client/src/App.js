@@ -35,7 +35,7 @@ function App() {
           <Route path="/mathNotes"  element={<ViewMathNotes/>} />
           <Route path="/literatureNotes" element={<ViewLiteratureNotes/>} />
           <Route path="/viewNote" element={<ViewNote />} />
-          <Route path="/" element={<LandingPage/>} /> 
+          {/* <Route path="/" element={<LandingPage/>} />  */}
           <Route path="/dashboard" element={<Dashboard/>} /> 
           <Route path="/auth" element={<Auth/>} /> 
           <Route path="/notify" element={<Notify/>} /> 

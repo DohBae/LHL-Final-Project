@@ -25,6 +25,7 @@ export default function Notes(props) {
 
   //use localStorage data to auto populate
   const id = JSON.parse(localStorage.getItem('notifyUser')).id
+  const name = JSON.parse(localStorage.getItem('notifyUser')).firstname
   // console.log("ID: ", id)
   // const id = 3;
   // useEffect(() => {
@@ -67,7 +68,7 @@ export default function Notes(props) {
 
   return (
     <div>
-      <h1 text align="center" > Your Notes</h1>
+      <h1 text align="center" className="page-title"> {name}'s Notes</h1>
       {noteList}
     </div>
   )}

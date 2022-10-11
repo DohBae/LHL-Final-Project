@@ -93,6 +93,7 @@
   color: white;
 }
 
+
 /* NOTE EDITOR/PREVIEW (MAIN) STYLES */
 
 .app-main {
@@ -126,6 +127,11 @@
 #body {
   background: rgba(255, 255, 255, 0.883);
   border-radius: 3px;
+}
+
+.my-btn {
+  display: flex;
+  justify-content: end;
 }
 
 

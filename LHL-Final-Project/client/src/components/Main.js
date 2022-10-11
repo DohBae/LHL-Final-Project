@@ -56,9 +56,9 @@ export default function Main(props) {
             onChange={(e) => { setText(e.target.value) }} required
           />
           <div className="my-btn">
-          <button type="button" class="btn btn-primary" onClick={() => {
+          <button type="button" class="btn btn-outline-primary" onClick={() => {
             addNote(title, text, classId, name)}} //change class and semester
-          >Add note</button>
+          >Add Note</button>
          <button type="button" class="btn btn-outline-danger" onClick={() => {reset()}}>Cancel</button>
           </div>
         </form>

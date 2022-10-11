@@ -31,6 +31,14 @@ body {
   background: rgba(255, 255, 255, 0.883);
 }
 
+.card-footer {
+  background: rgba(255, 255, 255, 0.883);
+}
+
+.card-title {
+  font-weight: bold;
+}
+
 /* Responsive columns - one column layout (vertical) on small screens */
 @media screen and (max-width: 600px) {
   .column {
@@ -42,7 +50,7 @@ body {
 
 .card-container {
   width:fit-content;
-  margin-top: 25%;
+  margin-top: 3%;
 }
 
 .card-body {

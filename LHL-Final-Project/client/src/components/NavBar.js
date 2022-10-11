@@ -4,7 +4,7 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { useNavigate } from 'react-router-dom';
 import {GiNotebook} from 'react-icons/gi'
-import Logo from './logo.png';
+import Logo from './logo.PNG';
 
 export default function NavBar(props) {
 

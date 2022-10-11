@@ -42,13 +42,20 @@ export default function ViewMathNotes() {
               <button type="button" class="btn btn-outline-primary">Edit</button>
               <button type="button" class="btn btn-outline-danger">Delete</button>
             </div> */}
-            <Card.Text >{note.body.substr(0,200) + "....."}</Card.Text>
+            <Card.Text >{note.body.substr(0,175) + "....."}</Card.Text>
             <div align="right">
             <small align ="right"className="note-meta">Last modified: {note.publishdate}</small>
             <br></br>
             <small align ="right"className="note-meta">posted by user:{note.user_id}</small>
               </div>
           </Card.Body>
+          <Card.Footer>
+            <div align="right">
+              <small align="right" className="note-meta">Last modified: {note.publishdate}</small>
+              <br></br>
+              <small align="right" className="note-meta">posted by user:{note.user_id}</small>
+            </div>
+          </Card.Footer>
         </Card>
       </div>
     </div>
@@ -57,7 +64,7 @@ export default function ViewMathNotes() {
 
   return (
     <div>
-      <h1 text align="center"> Math notes</h1>
+      <h1 text align="center" className="page-title"> Math Notes</h1>
       <Container className="notes-layout">
       {noteListed}
       </Container>

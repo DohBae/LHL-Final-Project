@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { noteContext } from 'providers/NoteProvider';
 import { noteContext } from '../providers/NoteProvider';
+import { BsTrash } from 'react-icons/bs';
 
 export default function Sidebar() {
 
@@ -43,9 +44,8 @@ const noteList = noteData.map((note, i) => {
     <p>{note.body.substr(0, 100) + "....."}</p>
 
     <small className="note-meta">Last modified {note.publishdate}</small>
-    <br></br>
-    <div>
-      <button type="button" onClick={()=> deleteNote(note.id)}>Delete</button>
+    <div align="right">
+      <button type="button" onClick={()=> deleteNote(note.id)}><BsTrash size={20} /></button>
     </div>
   </div>
 

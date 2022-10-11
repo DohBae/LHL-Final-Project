@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BsBookmarkHeart } from 'react-icons/bs';
 
 
 // Create a Context
@@ -181,12 +182,12 @@ export default function NoteProvider(props) {
   function isNoteIdSaved(noteId) {
     for (let i of favoritedNotes) {
       if (i.note_id === noteId) {
-        setNoteIdSaved("saved")
+        setNoteIdSaved(<BsBookmarkHeart size={25} />)
         setButtonStatus(true)
         return
       }
     }
-    setNoteIdSaved("Save to favourites")
+    setNoteIdSaved(<BsBookmarkHeart size={25} />)
     setButtonStatus(false)
   }
 
