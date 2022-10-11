@@ -32,7 +32,7 @@ export default function Notes(props) {
   //     .then(data => setNoteData(data))
   // }, [])
 
-  const { noteData, selectNoteIdToShow, deleteNote, editNoteView } = useContext(noteContext);
+  const { noteData, selectNoteIdToShow, deleteNote, editNoteView, isNoteIdSaved } = useContext(noteContext);
 
   const noteList = noteData.map((note, i) => (
 
@@ -40,16 +40,20 @@ export default function Notes(props) {
     <ul>
         <div className="card-container" >
           <Card border="dark" key={i} style={{ width: '80rem' }} >
-           <div onClick={() => selectNoteIdToShow(note.id)}>
             <Card.Body>
+           <div onClick={() =>{ selectNoteIdToShow(note.id);
+          isNoteIdSaved(note.id)}}>
               <Card.Title className="text-center">{note.title}</Card.Title>
               <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
-            </Card.Body>
             </div>
-              <div class=" text-right">
+            </Card.Body>
+            <div className='dash-div'>
+             <small align ="right"className="note-meta">Last modified: {note.publishdate}</small>
+            <div class=" text-right">
                 <button onClick={()=> editNoteView(note)} type="button" class="btn btn-outline-primary">Edit</button>
                 <button onClick={()=> deleteNote(note.id)} type="button" class="btn btn-outline-danger"><BsTrash size={20} /></button>
               </div>
+            </div>
           </Card>
         </div>
     

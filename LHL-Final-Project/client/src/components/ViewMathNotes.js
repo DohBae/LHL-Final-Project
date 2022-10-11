@@ -20,7 +20,7 @@ import '../App.css';
 
 export default function ViewMathNotes() {
 
-  const {allNotes, selectNoteIdToShow} = useContext(noteContext);
+  const {allNotes, selectNoteIdToShow, isNoteIdSaved} = useContext(noteContext);
 
   const noteList = allNotes.filter((note) => note.class_id === 2)
 
@@ -30,7 +30,7 @@ export default function ViewMathNotes() {
 <ul>
     
       
-<div onClick={() => selectNoteIdToShow(note.id)}>
+<div onClick={() => {selectNoteIdToShow(note.id); isNoteIdSaved(note.id)}}>
 
 < div className= "card-container" >
         <Card border="dark" key={i} style={{ width: '80rem' }} href="/addNotes" >
@@ -41,7 +41,11 @@ export default function ViewMathNotes() {
               <button type="button" class="btn btn-outline-danger">Delete</button>
             </div> */}
             <Card.Text >{note.body.substr(0,300) + "....."}</Card.Text>
-    
+            <div align="right">
+            <small align ="right"className="note-meta">Last modified: {note.publishdate}</small>
+            <br></br>
+            <small align ="right"className="note-meta">posted by user:{note.user_id}</small>
+              </div>
           </Card.Body>
         </Card>
         </div>

@@ -4,9 +4,9 @@ import { useContext } from 'react';
 import { noteContext } from '../providers/NoteProvider';
 import './Notes.css'
 import Card from 'react-bootstrap/Card';
-import '../App.css';
-import './AddNotes.css'
+import { BsTrash } from 'react-icons/bs';
 
+import '../App.css';
 
 
 
@@ -23,42 +23,38 @@ import './AddNotes.css'
 
 export default function ViewHistoryNotes() {
 
-  const { allNotes, selectNoteIdToShow , isNoteIdSaved} = useContext(noteContext);
+  const { allNotes, selectNoteIdToShow, favoritedNotes, editNoteView, isNoteIdSaved, removeFromSaved} = useContext(noteContext);
 
-  const noteList = allNotes.filter((note) => note.class_id === 1)
+ // const noteList = favoritedNotes.filter((note) => note.class_id === 1)
 
 
-  const noteListed = noteList.map((note, i) => (
- 
+  const noteListed = favoritedNotes.map((note, i) => (
+
     <ul>
-      <div onClick={() => {selectNoteIdToShow(note.id)
-      isNoteIdSaved(note.id)}}>
         <div div className="card-container" >
           <Card border="dark" key={i} style={{ width: '80rem' }} >
             <Card.Body>
+      <div onClick={() => {selectNoteIdToShow(note.note_id); isNoteIdSaved(note.note_id)}}>
               <Card.Title className="text-center">{note.title}</Card.Title>
               {/* <div  class=" text-right">
               <button type="button" class="btn btn-outline-primary">Edit</button>
               <button type="button" class="btn btn-outline-danger">Delete</button>
             </div> */}
               <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
-              <div align="right">
-            <small align ="right"className="note-meta">Last modified: {note.publishdate}</small>
-            <br></br>
-            <small align ="right"className="note-meta">posted by user:{note.user_id}</small>
-              </div>
-
+      </div>
             </Card.Body>
+              <div class=" text-right">
+                <button onClick={()=> removeFromSaved(note.note_id)} type="button" class="btn btn-outline-danger"><BsTrash size={20} /></button>
+              </div>
           </Card>
         </div>
-      </div>
     </ul>
   ))
 
 
   return (
     <div align="center">
-      <h1 text align="center"> History notes</h1>
+      <h1 text align="center"> Saved notes</h1>
 
       {noteListed}
 

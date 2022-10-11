@@ -22,7 +22,7 @@ import '../App.css';
 
 export default function ViewLiteratureNotes() {
 
-  const { allNotes, selectNoteIdToShow } = useContext(noteContext);
+  const { allNotes, selectNoteIdToShow, isNoteIdSaved } = useContext(noteContext);
 
   const noteList = allNotes.filter((note) => note.class_id === 3)
   //console.log(noteList)
@@ -31,13 +31,18 @@ export default function ViewLiteratureNotes() {
 
     <ul>
 
-      <div onClick={() => selectNoteIdToShow(note.id)}>
+      <div onClick={() => {selectNoteIdToShow(note.id); isNoteIdSaved(note.id)}}>
 
         < div className="card-container" >
           <Card border="dark" key={i} style={{ width: '80rem' }} >
             <Card.Body>
               <Card.Title className="text-center">{note.title}</Card.Title>
               <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
+              <div align="right">
+            <small align ="right"className="note-meta">Last modified: {note.publishdate}</small>
+            <br></br>
+            <small align ="right"className="note-meta">posted by user:{note.user_id}</small>
+              </div>
             </Card.Body>
           </Card>
         </div>
