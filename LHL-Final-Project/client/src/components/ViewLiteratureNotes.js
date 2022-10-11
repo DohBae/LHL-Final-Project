@@ -4,8 +4,9 @@ import { useContext } from 'react';
 import { noteContext } from '../providers/NoteProvider';
 import './Notes.css'
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 import '../App.css';
-
+import './ViewNote.css';
 //import { Navigate } from 'react-router-dom';
 
 
@@ -29,34 +30,32 @@ export default function ViewLiteratureNotes() {
 
   const noteListed = noteList.map((note, i) => (
 
-    <ul>
+   
 
       <div onClick={() => {selectNoteIdToShow(note.id); isNoteIdSaved(note.id)}}>
-
-        < div className="card-container" >
-          <Card border="dark" key={i} style={{ width: '80rem' }} >
-            <Card.Body>
+      < div className="card-container" >
+        <Card border="dark" key={i} style={{ width: '18rem', height: '20rem' }} >
+        <Card.Body>
               <Card.Title className="text-center">{note.title}</Card.Title>
-              <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
+              <Card.Text >{note.body.substr(0, 200) + "....."}</Card.Text>
               <div align="right">
             <small align ="right"className="note-meta">Last modified: {note.publishdate}</small>
             <br></br>
             <small align ="right"className="note-meta">posted by user:{note.user_id}</small>
               </div>
             </Card.Body>
-          </Card>
-        </div>
+        </Card>
       </div>
-    </ul>
+    </div>
   ))
 
 
   return (
-    <div align="center">
+    <div>
       <h1 text align="center"> Literature notes</h1>
-
-      {noteListed}
-
+      <Container className="notes-layout">
+        {noteListed}
+      </Container>
     </div>
   );
 }

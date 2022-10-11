@@ -7,6 +7,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { BsTrash } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import {BiEdit} from 'react-icons/bi';
 
 export default function Notes(props) {
   const navigate = useNavigate()
@@ -39,7 +40,8 @@ export default function Notes(props) {
 
     <ul>
         <div className="card-container" >
-          <Card border="dark" key={i} style={{ width: '80rem' }} >
+        <Card key={i} style={{ width: '80rem' }} class="border-0" >
+
             <Card.Body>
            <div onClick={() =>{ selectNoteIdToShow(note.id);
           isNoteIdSaved(note.id)}}>
@@ -47,13 +49,16 @@ export default function Notes(props) {
               <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
             </div>
             </Card.Body>
+            <Card.Footer>
+
             <div className='dash-div'>
              <small align ="right"className="note-meta">Last modified: {note.publishdate}</small>
-            <div class=" text-right">
-                <button onClick={()=> editNoteView(note)} type="button" class="btn btn-outline-primary">Edit</button>
+                <div class=" text-right">
+                <button onClick={()=> editNoteView(note)} type="button" class="btn btn-outline-primary"> <BiEdit size={25}/></button>
                 <button onClick={()=> deleteNote(note.id)} type="button" class="btn btn-outline-danger"><BsTrash size={20} /></button>
               </div>
             </div>
+            </Card.Footer>      
           </Card>
         </div>
     
@@ -62,7 +67,7 @@ export default function Notes(props) {
 
   return (
     <div>
-      <h1 text align="center"> Your notes</h1>
+      <h1 text align="center" > Your Notes</h1>
       {noteList}
     </div>
   )}

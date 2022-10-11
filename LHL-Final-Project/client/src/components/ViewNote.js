@@ -4,22 +4,26 @@ import { useContext } from 'react';
 import { noteContext } from '../providers/NoteProvider';
 import './Notes.css'
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
+
 export default function ViewNote () {
 
   const {allNotes, noteIdToShow, addNoteToFavorites, noteIdSaved, buttonStatus,
     setChange,setButtonStatus, isNoteIdSaved, selectNoteIdToShow} = useContext(noteContext);
-  const navigate = useNavigate()
 
   const noteList = allNotes.filter((note) => note.id === noteIdToShow)
+  const navigate = useNavigate()
 
+  const handleOnClick = (e) => {
+    e.preventDefault()
+    navigate(-1)
+  }
 
   const noteListed = noteList.map((note, i) => (
       
 <ul>
-    
-    
         <Card border="dark" key={i} style={{ width: '70rem', height: '40rem'} } href="/addNotes" >
           <Card.Body>
             <Card.Title className="text-center">{note.title}</Card.Title>
@@ -37,8 +41,11 @@ export default function ViewNote () {
               <button type="button" class="btn btn-outline-primary">Edit</button>
               <button type="button" class="btn btn-outline-danger">Delete</button>
             </div> */}
-            
-          
+            <div className="d-grid gap-2">
+              <Button variant="outline-primary" size="lg" onClick={handleOnClick}>
+                Back to Notes
+              </Button>
+            </div>
         </Card>
         </ul>
     ))

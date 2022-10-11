@@ -43,7 +43,7 @@ export default function Main(props) {
           <option >Literature</option>
 
         </select>
-        <p >class: {name}</p>
+        {/* <p >class: {name}</p> */}
       </div>
 
 
