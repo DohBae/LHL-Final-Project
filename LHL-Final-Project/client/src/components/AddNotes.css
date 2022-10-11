@@ -8,10 +8,9 @@
 
  body,
 .App {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Inter Tight', sans-serif;
   width: 100%;
-  height: 100vh;
+  height: 100;
   overflow: hidden;
   font-size: 16px;
   background: url(https://www.toptal.com/designers/subtlepatterns/patterns/lightpaperfibers.png);
@@ -40,13 +39,14 @@
 .app-sidebar {
   width: 30%;
   height: 100vh;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #615f759f;
 }
 
 .app-sidebar-header {
   display: flex;
   justify-content: space-between;
   padding: 25px;
+  border-bottom: 1px solid #615f759f;
 }
 .app-sidebar-header h1 {
   margin: 0;
@@ -55,9 +55,17 @@
 .app-sidebar-notes {
   height: calc(100vh - 78px);
   overflow-y: scroll;
+  width: 100%;
+  border: 1px solid #615f759f;
+  border-radius: 3px;
+  /* background-image: url("") */
 }
 .app-sidebar-note {
   padding: 25px;
+  border: 1px solid #615f759f;
+  box-shadow: rgb(0 0 0 / 16%) 5px 5px 5px;
+  background: rgba(255, 255, 255, 0.883);
+  border-radius: 3px;
   /* cursor: pointer; */
 }
 .sidebar-note-title {
@@ -72,11 +80,12 @@
 }
 .app-sidebar-note small {
   display: block;
-  color: #999;
+  color: #615f75;
 }
 
 .app-sidebar-note:hover {
-  background: #ddd;
+  background: #C7DDCC;
+  box-shadow: rgb(0 0 0 / 16%) 10px 10px 10px;
 }
 .app-sidebar-note.active,
 .app-sidebar-note.active small {
@@ -103,6 +112,22 @@
   font-size: 2rem;
   color: #999;
 }
+
+.custom-select {
+  border-radius: 3px;
+  border-color: 1px solid #615f759f;
+}
+
+#title {
+  background: rgba(255, 255, 255, 0.883);
+  border-radius: 3px;
+}
+
+#body {
+  background: rgba(255, 255, 255, 0.883);
+  border-radius: 3px;
+}
+
 
 /* Editing */
 .app-main-note-edit {
