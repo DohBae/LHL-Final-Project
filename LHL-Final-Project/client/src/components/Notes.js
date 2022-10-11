@@ -40,14 +40,17 @@ export default function Notes(props) {
         <div className="card-container" >
           <Card key={i} style={{ width: '80rem' }} class="border-0" >
             {/* <div onClick={() => selectNoteIdToShow(note.id)}> */}
-            <Card.Body >
-              <Card.Title className="text-center" onClick={() => selectNoteIdToShow(note.id)}>{note.title}</Card.Title>
-              <Card.Text onClick={() => selectNoteIdToShow(note.id) }>{note.body.substr(0, 300) + "....."}</Card.Text>
+            <Card.Body onClick={() => selectNoteIdToShow(note.id) }>
+              <Card.Title className="text-center" >{note.title}</Card.Title>
+              <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
+              </Card.Body>
+              <Card.Footer>
               <div class="text-right">
                 <button type="button" class="btn btn-outline-primary"> <BiEdit size={25}/></button>
                 <button onClick={()=> deleteNote(note.id)} type="button" class="btn btn-outline-danger float-right"><BsTrash size={23} /></button>
               </div>
-            </Card.Body>
+              </Card.Footer>
+           
             {/* </div> */}
               
           </Card>
