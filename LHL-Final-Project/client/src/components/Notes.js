@@ -58,7 +58,7 @@ export default function Notes(props) {
 
   return (
     <div>
-      <h1 text align="center"> Your Notes</h1>
+      <h1 text align="center" class="font-weight-bold"> Your Notes</h1>
       {noteList}
     </div>
   )}
