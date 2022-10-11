@@ -10,7 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ViewNote () {
 
-  const {allNotes, noteIdToShow} = useContext(noteContext);
+  const {allNotes, noteIdToShow, addNoteToFavorites, noteIdSaved, buttonStatus,
+    setChange,setButtonStatus, isNoteIdSaved, selectNoteIdToShow} = useContext(noteContext);
 
   const noteList = allNotes.filter((note) => note.id === noteIdToShow)
   const navigate = useNavigate()
@@ -27,6 +28,14 @@ export default function ViewNote () {
           <Card.Body>
             <Card.Title className="text-center">{note.title}</Card.Title>
             <Card.Text  style={{fontsize:80}}>{note.body}</Card.Text>
+            <br></br>
+            <div align="right">
+          <button disabled={buttonStatus} id='myButton' type="button" class="btn btn-outline-primary" 
+          onClick={() => {addNoteToFavorites(note.id);
+            setChange("changed")
+           navigate('/favorites');
+           }}>{noteIdSaved}</button>
+            </div>
           </Card.Body>
             {/* <div class=" text-right">
               <button type="button" class="btn btn-outline-primary">Edit</button>

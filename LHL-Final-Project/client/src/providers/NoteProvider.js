@@ -10,20 +10,26 @@ export default function NoteProvider(props) {
 
 
   const navigate = useNavigate()
- 
+
   // Here is our Shared State Object
+  //const [dataToEdit, setDataToEdit] = useState([])
   const [noteData, setNoteData] = useState([]);
   const [allNotes, setAllNotes] = useState([]);
-  const [ title, setTitle] = useState("")
+  const [title, setTitle] = useState("")
   const [text, setText] = useState("")
   const [name, setName] = useState("")
   const [noteIdToShow, setNoteIdToShow] = useState(0)
   const [userInfo, setUserInfo] = useState(null)
-
+  const [noteIdToEdit, setNoteIdToEdit] = useState(0)
+  const [saved, setSaved] = useState("save to favorites")
+  const [favoritedNotes, setFavoritedNotes] = useState([])
+  const [noteIdSaved, setNoteIdSaved] = useState("save to favourites")
+  const [buttonStatus, setButtonStatus] = useState(false)
+  const [change, setChange] = useState("")
   // Here is our Shared State Object
   const [classId, setClassId] = useState()
   // const userId = JSON.parse(localStorage.getItem('notifyUser')).id; // this has to come from auth provider-useContext
-const userId = 3
+  const userId = 1
   useEffect(() => {
     fetch(`/notes/${userId}`).then(
       res => res.json())
@@ -31,10 +37,16 @@ const userId = 3
   }, [])
 
   useEffect(() => {
+    fetch(`/favorites`).then(
+      res => res.json())
+      .then(data => setFavoritedNotes(data.favorites))
+  }, [change])
+
+  useEffect(() => {
     fetch(`/notes`).then(
       res => res.json())
       .then(data => setAllNotes(data.notes))
-  }, [])
+  }, [text])
 
 
   // useEffect(() => {
@@ -51,19 +63,19 @@ const userId = 3
 
   function addNote(title, text, classId, name) {
 
-   
+
     let realId;
     console.log(name)
-    if(name === "History") {
+    if (name === "History") {
       realId = 1;
     }
-    if(name === "Math") {
+    if (name === "Math") {
       realId = 2;
     }
-   if (name === "Literature") {
-     realId = 3;
-   }
-    console.log("REALID:",realId)
+    if (name === "Literature") {
+      realId = 3;
+    }
+    console.log("REALID:", realId)
     const note = {
       title: title,
       body: text,
@@ -86,7 +98,32 @@ const userId = 3
         setNoteData([note, ...noteData])
         //setNoteData([...noteData, note])
       })
-      reset()
+    reset()
+  }
+
+  function editNote(title, text, noteId) {
+    isNoteIdSaved(noteId)
+    const note = {
+      title: title,
+      body: text,
+    }
+    const body = JSON.stringify(note)
+
+    fetch(`/notes/edit/${noteId}`, {
+      method: "POST",
+      body,
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+
+    }).then(res => res.json())
+      .then(note => {
+        console.log(note)
+        setNoteData([noteData])
+        selectNoteIdToShow(note.id)
+      })
+    reset()
+
   }
 
   function deleteNote(noteId) {
@@ -98,7 +135,7 @@ const userId = 3
     }).then(res => res.json())
       .then(data => {
         //console.log("data:", data)
-        setNoteData(noteData.filter((notes)=> notes.id !== noteId)) // remove obj from array 
+        setNoteData(noteData.filter((notes) => notes.id !== noteId)) // remove obj from array 
       })
   }
 
@@ -107,31 +144,62 @@ const userId = 3
     navigate("/viewNote")
   }
 
-  // function setCourseToAdd(name) {
-  //   //setCourseName(name)
+  function editNoteView(data) {
+    setTitle(data.title)
+    setText(data.body)
+    setNoteIdToEdit(data.id)
+    navigate('/edit')
+  }
 
-  //   if (name === "history") {
-  //     setClassId(1)
-     
-      
-  //   }
-  //   if (name === "math") {
-  //     setClassId(2)
-  //   }
-  //   else {
-  //     setClassId(3)
-  //   }
-  //  // console.log(courseName)
-  //  console.log(name)
-  //   console.log(classId)
-  // }
+  function addNoteToFavorites(noteId) {
+    fetch(`/favorites/${noteId}`, {
+      method: "POST"
+
+    }).then(res => res.json())
+      .then(data => {
+        //console.log("data:", data)
+        console.log(data)
+      })
+    isNoteIdSaved(noteId)
+    selectNoteIdToShow(noteId)
+
+
+  }
+  function removeFromSaved(noteId) {
+
+    fetch(`/favorites/delete/${noteId}`, {
+      method: "POST"
+
+    }).then(res => res.json())
+      .then(data => {
+        //console.log("data:", data)
+        setFavoritedNotes(favoritedNotes.filter((notes) => notes.note_id !== noteId)) // remove obj from array 
+      })
+
+  }
+
+  function isNoteIdSaved(noteId) {
+    for (let i of favoritedNotes) {
+      if (i.note_id === noteId) {
+        setNoteIdSaved("saved")
+        setButtonStatus(true)
+        return
+      }
+    }
+    setNoteIdSaved("Save to favourites")
+    setButtonStatus(false)
+  }
 
 
 
 
   // This list can get long with a lot of functions.  Reducer may be a better choice
-  const providerData = { noteData, classId, userInfo, setUserInfo, title, text, name, allNotes, noteIdToShow,setNoteIdToShow,
-     setName, setTitle, setText, setAllNotes,  addNote, deleteNote,  setClassId, selectNoteIdToShow};
+  const providerData = {
+    noteData, buttonStatus, favoritedNotes, noteIdSaved, classId, userInfo, title,
+    text, name, allNotes, noteIdToShow, noteIdToEdit, saved,change, setChange,  setSaved, editNoteView,
+    editNote, setNoteIdToShow, setUserInfo, setNoteIdToEdit, setName, setTitle, setText, setAllNotes,
+    addNote, deleteNote, isNoteIdSaved, setClassId, selectNoteIdToShow, removeFromSaved, reset, addNoteToFavorites
+  };
 
   // We can now use this as a component to wrap anything 
   // that needs our state

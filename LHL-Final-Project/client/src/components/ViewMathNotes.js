@@ -22,19 +22,32 @@ import './ViewNote.css';
 
 export default function ViewMathNotes() {
 
-  const { allNotes, selectNoteIdToShow } = useContext(noteContext);
+  const {allNotes, selectNoteIdToShow, isNoteIdSaved} = useContext(noteContext);
 
   const noteList = allNotes.filter((note) => note.class_id === 2)
 
 
   const noteListed = noteList.map((note, i) => (
+      
 
-    <div onClick={() => selectNoteIdToShow(note.id)}>
+    
+      
+
+        <div onClick={() => {selectNoteIdToShow(note.id); isNoteIdSaved(note.id)}}>
       < div className="card-container" >
-        <Card border="dark" key={i} style={{ width: '18rem', height: '20rem' }} href="/addNotes" >
-          <Card.Body>
+        <Card border="dark" key={i} style={{ width: '18rem', height: '20rem' }}>
+        <Card.Body>
             <Card.Title className="text-center">{note.title}</Card.Title>
-            <Card.Text >{note.body.substr(0, 200) + "....."}</Card.Text>
+            {/* <div  class=" text-right">
+              <button type="button" class="btn btn-outline-primary">Edit</button>
+              <button type="button" class="btn btn-outline-danger">Delete</button>
+            </div> */}
+            <Card.Text >{note.body.substr(0,200) + "....."}</Card.Text>
+            <div align="right">
+            <small align ="right"className="note-meta">Last modified: {note.publishdate}</small>
+            <br></br>
+            <small align ="right"className="note-meta">posted by user:{note.user_id}</small>
+              </div>
           </Card.Body>
         </Card>
       </div>

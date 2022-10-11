@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Main(props) {
 
-  const { addNote,name, classId, setClassId, setName, title, text , setTitle, setText, showName } = useContext(noteContext);
+  const { addNote,name, classId, setClassId, setName, title, text , setTitle, setText, reset } = useContext(noteContext);
 
  // const [name, setName] = useState("")
  // const [classId, setClassId] = useState(null)
@@ -55,9 +55,12 @@ export default function Main(props) {
           <textarea id="body" placeholder="Write your note here..." value={text}
             onChange={(e) => { setText(e.target.value) }} required
           />
+          <div className="my-btn">
           <button type="button" class="btn btn-primary" onClick={() => {
             addNote(title, text, classId, name)}} //change class and semester
           >Add note</button>
+         <button type="button" class="btn btn-outline-danger" onClick={() => {reset()}}>Cancel</button>
+          </div>
         </form>
       </div>
 

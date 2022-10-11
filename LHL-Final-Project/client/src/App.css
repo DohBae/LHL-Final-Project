@@ -124,5 +124,25 @@ label {
   font-weight: 600;
   color: #16123fe8;
 }
-
-
+.ed-div{
+  display: flex;
+  gap: 20px;
+}
+.my-btn{
+  display: flex;
+  gap: 20px;
+}
+.dash-div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.fav{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+  margin-left: 20px;
+  align-items:center;
+}

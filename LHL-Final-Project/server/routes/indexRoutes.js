@@ -52,7 +52,13 @@ router.get('/favorites', (req, res) => {
   favorites.getFavoritedNotes().then(data => {
     res.json({favorites: data})
   })
-})
+});
+
+router.get('/favs', (req, res) => {
+  favorites.getFavs().then(data => {
+    res.json({data: data});
+  })
+});
 
 router.post('/notes', (req, res) => {
   console.log("posting test")
@@ -62,11 +68,32 @@ router.post('/notes', (req, res) => {
    })
 });
 
+router.post('/notes/edit/:id', (req, res) => {
+  console.log("editing test")
+  console.log(req.body,req.params.id)
+  notes.editNotes(req.body, req.params.id).then(data => {
+    res.json(data)
+  })
+});
+
+
 router.post('/notes/delete/:id', (req, res) => {
   console.log("deleting test")
   console.log(req.params)
   notes.deleteNote(req.params.id).then(data => {
     res.json({userNotes: data})
+  })
+});
+
+router.post('/favorites/:id', (req, res) => {
+  favorites.addFavorites(req.params.id).then(data => {
+    res.json({data: data})
+  })
+});
+
+router.post('/favorites/delete/:id', (req, res) => {
+  favorites.deleteFromFavourites(req.params.id).then(data => {
+    res.json({data: data})
   })
 });
 
