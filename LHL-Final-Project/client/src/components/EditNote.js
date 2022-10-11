@@ -6,51 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Main(props) {
 
-  const { noteIdToEdit, title, text , setTitle, setText, editNote, reset} = useContext(noteContext);
+  const { noteIdToEdit, title, text, setTitle, setText, editNote, reset } = useContext(noteContext);
   const navigate = useNavigate()
-
- // const [name, setName] = useState("")
- // const [classId, setClassId] = useState(null)
-
-  //const {  courseName, classData, setClassStateAddingNotes } = useContext(classContext);
-
-  // const [title, setTitle] = useState("")
-  // const [text, setText] = useState("")
-
-  // function reset() {
-  //   setTitle("")
-  //   setText("")
-  // }
-
-
 
   return (
     <div className="app-main">
-
-
-      {/* <div className="container-p5">
-        <select className="custom-select" onChange={(e) => {
-          let selectedClass = e.target.value
-          console.log(selectedClass)
-          setName(selectedClass)
-          // selectId(name)
-         //  console.log( selectId(name))
-          // console.log(classId)
-         // showName()
-         // selectId();
-        }}>
-          <option >Select class </option>
-          <option >History</option>
-          <option >Math</option>
-          <option >Literature</option>
-
-        </select>
-        <p >class: {name}</p>
-      </div> */}
-
-
       <div className="app-main-note-edit">
-        <h3> Edit your note ...</h3> 
+        <h3> Edit your note ...</h3>
         <br></br>
         <form>
           <input type="text" id="title" autoFocus placeholder="Enter title here" value={title}
@@ -60,17 +22,12 @@ export default function Main(props) {
             onChange={(e) => { setText(e.target.value) }} required
           />
           <div className="ed-div">
-          <button type="button" class="btn btn-primary" onClick={() => { editNote(title, text, noteIdToEdit )}} >Save change</button>
-          <button type="button" class="btn btn-outline-danger" onClick={() => {reset(); navigate('/dashboard')}}>Cancel</button>
+            <button type="button" class="btn btn-outline-primary" onClick={() => { editNote(title, text, noteIdToEdit) }} >Save change</button>
+            <button type="button" class="btn btn-outline-danger" onClick={() => { reset(); navigate('/dashboard') }}>Cancel</button>
           </div>
         </form>
       </div>
-
       <br></br>
-      {/* <div className="app-main-note-preview">
-        <h1 className="preview-title">TITLE</h1>
-        <div className="markdown-preview">note preview</div>
-      </div> */}
     </div>
   )
 }
