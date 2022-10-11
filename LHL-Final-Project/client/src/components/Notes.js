@@ -39,16 +39,16 @@ export default function Notes(props) {
     <ul>
         <div className="card-container" >
           <Card key={i} style={{ width: '80rem' }} class="border-0" >
-            <div onClick={() => selectNoteIdToShow(note.id)}>
-            <Card.Body>
-              <Card.Title className="text-center">{note.title}</Card.Title>
-              <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
+            {/* <div onClick={() => selectNoteIdToShow(note.id)}> */}
+            <Card.Body >
+              <Card.Title className="text-center" onClick={() => selectNoteIdToShow(note.id)}>{note.title}</Card.Title>
+              <Card.Text onClick={() => selectNoteIdToShow(note.id) }>{note.body.substr(0, 300) + "....."}</Card.Text>
               <div class="text-right">
                 <button type="button" class="btn btn-outline-primary"> <BiEdit size={25}/></button>
                 <button onClick={()=> deleteNote(note.id)} type="button" class="btn btn-outline-danger float-right"><BsTrash size={23} /></button>
               </div>
             </Card.Body>
-            </div>
+            {/* </div> */}
               
           </Card>
         </div>
@@ -58,7 +58,7 @@ export default function Notes(props) {
 
   return (
     <div>
-      <h1 text align="center" class="font-weight-bold"> Your Notes</h1>
+      <h1 text align="center" > Your Notes</h1>
       {noteList}
     </div>
   )}

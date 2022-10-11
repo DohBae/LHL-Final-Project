@@ -26,8 +26,8 @@ export default function User(props) {
           <Card.Img classname="profilePic" variant="top" src={user.profilepic} alt="Profile Pic" class="rounded-top"/>
           <Card.Body>
             <Card.Title className="text-center">{user.firstname} {user.lastname}</Card.Title>
-            <Card.Text className="text-center"> <BsTelephoneFill size={20}/> {user.phonenumber}  </Card.Text>
-            <Card.Text className="text-center"> <HiOutlineMail size={23} />{user.email} </Card.Text>
+            <Card.Text className="text-center"> <BsTelephoneFill size={20} color ="//#16123f"/> { user.phonenumber}  </Card.Text>
+            <Card.Text className="text-center"> <HiOutlineMail size={23} color ="#16123f"/>{ user.email} </Card.Text>
           </Card.Body>
         </Card>
       ))
