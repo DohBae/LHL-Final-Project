@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter Tight', sans-serif;;
 }
 
 /* Float four columns side by side */
@@ -28,7 +28,7 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   padding: 16px;
   text-align: center;
-  background-color: #f1f1f1;
+  background: rgba(255, 255, 255, 0.883);
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */
@@ -38,4 +38,20 @@ body {
     display: block;
     margin-bottom: 20px;
   }
+}
+
+.card-container {
+  width:fit-content;
+  margin-top: 25%;
+}
+
+.card-body {
+  padding: 3%
+}
+
+.notes-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-around;
 }

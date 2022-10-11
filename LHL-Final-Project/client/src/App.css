@@ -1,25 +1,21 @@
 
-#root {
-  background: linear-gradient(#75c9b7bd, #abd699b3)
-}
-
-.font-link{
+.fixed-content {
+  background: linear-gradient(45deg, #abd699b3, #75c9b7bd, #C7DDCC);
+  padding-top: 5%;
+  height: 100%;
+  width: 100%;
   font-family: 'Inter Tight', sans-serif;
 }
 
-
- .bg-color{
+.bg-color{
   background-color: #16123f;
 }
-.content{
-  margin-top: 70px;
-  padding: 12px;
-  height: 3000px;
-}
+
 .navv{
   display: flex;
   justify-content: space-between;
   justify-content: right;
+  font-family: 'Inter Tight', sans-serif;
 } 
 
  .text-right {
@@ -36,7 +32,7 @@
 }
 
 .card-body {
-  background-color: #eeecd5a6;
+  background: rgba(255, 255, 255, 0.883);
 }
 
 .nav-link.active {
@@ -66,6 +62,16 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  margin-top: -8%;
+  margin-top: -8%;
+  background: repeating-linear-gradient(45deg, #16123F, #C7DDCC, #75C9B7, #FFE26A, #ABD699, #ABD699, #FFE26A, #75C9B7, #C7DDCC, #16123F);
+  background-size: 500% 100%;
+  animation: gradient 15s linear infinite;
+  animation-direction: alternate;
+}
+@keyframes gradient {
+  0% {background-position: 0%}
+  100% {background-position: 100%}
 }
 
 .Auth-form {
@@ -118,4 +124,5 @@ label {
   font-weight: 600;
   color: #16123fe8;
 }
+
 
