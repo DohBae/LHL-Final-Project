@@ -43,7 +43,8 @@ export default function ViewHistoryNotes() {
               <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
       </div>
             </Card.Body>
-              <div class=" text-right">
+              <div class="fav">
+                <small>Last modified: {note.publishdate}</small>
                 <button onClick={()=> removeFromSaved(note.note_id)} type="button" class="btn btn-outline-danger"><BsTrash size={20} /></button>
               </div>
           </Card>

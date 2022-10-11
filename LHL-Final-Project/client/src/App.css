@@ -133,3 +133,10 @@ label {
   margin-left: 10px;
   margin-right: 10px;
 }
+.fav{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+  margin-left: 20px;
+  align-items:center;
+}

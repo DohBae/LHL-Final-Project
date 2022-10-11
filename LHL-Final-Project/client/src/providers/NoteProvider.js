@@ -177,6 +177,7 @@ export default function NoteProvider(props) {
       })
 
   }
+
   function isNoteIdSaved(noteId) {
     for (let i of favoritedNotes) {
       if (i.note_id === noteId) {
