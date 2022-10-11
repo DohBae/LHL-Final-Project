@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Auth() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [authMode, setAuthMode] = useState("signin");
   // login values. these get sent to the back end
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ function Auth() {
   const [regEmail, setRegEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [regPassword, setRegPassword] = useState("");
-  
+
 
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
@@ -24,29 +24,27 @@ function Auth() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post("/api/login", {email, password})
-    .then((result) => {
-      const user = result.data.user
-      if (user) {
-        localStorage.setItem("notifyUser", JSON.stringify(user))
-        navigate("/dashboard")
-      }
-    })
+    axios.post("/api/login", { email, password })
+      .then((result) => {
+        const user = result.data.user
+        if (user) {
+          localStorage.setItem("notifyUser", JSON.stringify(user))
+          navigate("/dashboard")
+        }
+      })
   }
-  
+
   const handleRegSubmit = (e) => {
     e.preventDefault()
-    axios.post("/api/register", {firstName, lastName, email: regEmail, phoneNumber, password: regPassword})
-    .then((result) => {
-      const user = result.data
+    axios.post("/api/register", { firstName, lastName, email: regEmail, phoneNumber, password: regPassword })
+      .then((result) => {
+        const user = result.data
         if (user) {
           localStorage.setItem("notifyUser", JSON.stringify(user))
           window.location.reload()
         }
       })
-    }
-
-    
+  }
 
   if (authMode === "signin") {
     return (

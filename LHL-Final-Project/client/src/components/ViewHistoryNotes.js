@@ -1,6 +1,5 @@
 import React from 'react';
 import { useContext } from 'react';
-// import { noteContext } from 'providers/NoteProvider';
 import { noteContext } from '../providers/NoteProvider';
 import './Notes.css'
 import Card from 'react-bootstrap/Card';
@@ -10,28 +9,13 @@ import './AddNotes.css'
 import './ViewNote.css';
 
 
-
-// export default function HistoryNotes() {
-
-//   const {allNotes, setAllNotes} = useContext(noteContext);
-
-//   const noteList = allNotes.filter((note) => note.name ==="history")
-
-// }
-
-
-
-
 export default function ViewHistoryNotes() {
 
   const { allNotes, selectNoteIdToShow, isNoteIdSaved } = useContext(noteContext);
 
   const noteList = allNotes.filter((note) => note.class_id === 1)
 
-
   const noteListed = noteList.map((note, i) => (
-
-
 
     <div onClick={() => {
       selectNoteIdToShow(note.id)
@@ -41,10 +25,6 @@ export default function ViewHistoryNotes() {
         <Card border="dark" key={i} style={{ width: '18rem', height: '20rem' }} >
           <Card.Body>
             <Card.Title className="text-center">{note.title}</Card.Title>
-            {/* <div  class=" text-right">
-              <button type="button" class="btn btn-outline-primary">Edit</button>
-              <button type="button" class="btn btn-outline-danger">Delete</button>
-            </div> */}
             <Card.Text >{note.body.substr(0, 175) + "....."}</Card.Text>
           </Card.Body>
           <Card.Footer>
@@ -59,7 +39,6 @@ export default function ViewHistoryNotes() {
     </div>
   ))
 
-
   return (
     <div>
       <h1 text align="center" className="page-title"> History Notes</h1>
@@ -67,6 +46,5 @@ export default function ViewHistoryNotes() {
         {noteListed}
       </Container>
     </div>
-
   );
 }

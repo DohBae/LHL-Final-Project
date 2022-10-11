@@ -1,6 +1,5 @@
 import React from 'react';
 import { useContext } from 'react';
-// import { noteContext } from 'providers/NoteProvider';
 import { noteContext } from '../providers/NoteProvider';
 import './Notes.css'
 import Card from 'react-bootstrap/Card';
@@ -31,14 +30,10 @@ export default function ViewNote() {
           <Card.Text style={{ fontsize: 80 }}>{note.body}</Card.Text>
           <br></br>
         </Card.Body>
-        {/* <div class=" text-right">
-              <button type="button" class="btn btn-outline-primary">Edit</button>
-              <button type="button" class="btn btn-outline-danger">Delete</button>
-            </div> */}
         <Card.Footer>
           <div align="right" className="fav-button">
             <Button variant="outline-primary" onClick={handleOnClick}>
-              <BsBoxArrowLeft size={25}/> 
+              <BsBoxArrowLeft size={25} />
             </Button>
             <button disabled={buttonStatus} id='myButton' type="button" class="btn btn-outline-primary"
               onClick={() => {
@@ -46,21 +41,16 @@ export default function ViewNote() {
                 setChange("changed")
                 navigate('/favorites');
               }}>{noteIdSaved}</button>
-
           </div>
-
         </Card.Footer>
       </Card>
     </ul>
   ))
 
-
   return (
     <div align="center" className='div1'>
       <h1 text align="center"> </h1>
-
       {noteListed}
-
     </div>
   );
 }

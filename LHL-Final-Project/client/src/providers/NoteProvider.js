@@ -13,7 +13,6 @@ export default function NoteProvider(props) {
   const navigate = useNavigate()
 
   // Here is our Shared State Object
-  //const [dataToEdit, setDataToEdit] = useState([])
   const [noteData, setNoteData] = useState([]);
   const [allNotes, setAllNotes] = useState([]);
   const [title, setTitle] = useState("")
@@ -49,13 +48,6 @@ export default function NoteProvider(props) {
       .then(data => setAllNotes(data.notes))
   }, [text])
 
-
-  // useEffect(() => {
-  //   fetch(`/notes/classes`).then(
-  //     res => res.json())
-  //     .then(data => setCourses(data.classes))
-  // }, [])
-  // Functions to change  the counter state item
 
   function reset() {
     setTitle("")

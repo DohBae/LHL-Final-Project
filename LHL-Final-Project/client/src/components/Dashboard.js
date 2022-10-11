@@ -10,14 +10,14 @@ import '../App.css';
 
 
 function Dashboard() {
-  
+
   ////// login authentication ////////
   const navigate = useNavigate()
   const [user, setUser] = useState({})
 
   function checkLogin() {
     const userObject = localStorage.getItem('notifyUser')
-    
+
     if (!userObject) {
       navigate("/auth")
     }
@@ -27,24 +27,24 @@ function Dashboard() {
   useEffect(() => {
     checkLogin()
   }, [])
-////////////////////////////////
+  ////////////////////////////////
 
   return (
     <div align="center">
-    <Container fluid>
-      <Stack direction="horizontal" gap={3}>
-      <Row>
-        <Col>
-          <User  />
-        </Col>
-      <Col>
-        <Stack gap={3}>
-          <Notes />
+      <Container fluid>
+        <Stack direction="horizontal" gap={3}>
+          <Row>
+            <Col>
+              <User />
+            </Col>
+            <Col>
+              <Stack gap={3}>
+                <Notes />
+              </Stack>
+            </Col>
+          </Row>
         </Stack>
-      </Col>
-      </Row>
-    </Stack>
-    </Container>
+      </Container>
     </div>
   );
 }
