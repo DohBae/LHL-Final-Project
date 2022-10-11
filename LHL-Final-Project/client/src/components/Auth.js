@@ -16,8 +16,7 @@ function Auth() {
   const [regEmail, setRegEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [regPassword, setRegPassword] = useState("");
-
-  // user authentication
+  
 
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
