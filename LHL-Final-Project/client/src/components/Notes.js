@@ -6,6 +6,7 @@ import './Notes.css'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { BsTrash } from 'react-icons/bs';
+import {BiEdit} from 'react-icons/bi';
 
 export default function Notes(props) {
 
@@ -37,17 +38,21 @@ export default function Notes(props) {
 
     <ul>
         <div className="card-container" >
-          <Card border="dark" key={i} style={{ width: '80rem' }} >
-      <div onClick={() => selectNoteIdToShow(note.id)}>
-            <Card.Body>
-              <Card.Title className="text-center">{note.title}</Card.Title>
+          <Card key={i} style={{ width: '80rem' }} class="border-0" >
+            {/* <div onClick={() => selectNoteIdToShow(note.id)}> */}
+            <Card.Body onClick={() => selectNoteIdToShow(note.id) }>
+              <Card.Title className="text-center" >{note.title}</Card.Title>
               <Card.Text >{note.body.substr(0, 300) + "....."}</Card.Text>
-            </Card.Body>
-            </div>
-              <div class=" text-right">
-                <button type="button" class="btn btn-outline-primary">Edit</button>
-                <button onClick={()=> deleteNote(note.id)} type="button" class="btn btn-outline-danger"><BsTrash size={20} /></button>
+              </Card.Body>
+              <Card.Footer>
+              <div class="text-right">
+                <button type="button" class="btn btn-outline-primary"> <BiEdit size={25}/></button>
+                <button onClick={()=> deleteNote(note.id)} type="button" class="btn btn-outline-danger float-right"><BsTrash size={23} /></button>
               </div>
+              </Card.Footer>
+           
+            {/* </div> */}
+              
           </Card>
         </div>
     
@@ -56,7 +61,7 @@ export default function Notes(props) {
 
   return (
     <div>
-      <h1 text align="center"> Your notes</h1>
+      <h1 text align="center" > Your Notes</h1>
       {noteList}
     </div>
   )}
