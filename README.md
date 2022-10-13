@@ -1,5 +1,5 @@
 # Notify
-Welcome to Notify! An app where studetns can come together to share their notes with each other.
+Welcome to Notify! A multi page full stack webapp where studetns can come together to share their notes with each other.
 
 This is our final project for Lighthouse Labs.
 
@@ -12,6 +12,12 @@ Install dependencies with `npm install`.
 ```sh
 npm start
 ```
+## Tech stack
+React
+Express
+Javascript
+Html
+CSS
 
 ## Dependencies
 Node.js
