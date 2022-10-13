@@ -13,21 +13,21 @@ Install dependencies with `npm install`.
 npm start
 ```
 ## Tech stack
--React
--Express
--Javascript
--Html
--CSS
+- React
+- Express
+- Javascript
+- Html
+- CSS
 
 ## Dependencies
--Node.js
--Express
--Javascript
--React
--Axios
--PostgreSQL
--React Bootstrap
--React Router
+- Node.js
+- Express
+- Javascript
+- React
+- Axios
+- PostgreSQL
+- React Bootstrap
+- React Router
 
 ## Screenshots
 
